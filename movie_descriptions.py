@@ -8,7 +8,7 @@ from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv('api_keys.env')
 client = OpenAI(
     # This is the default and can be omitted
-    api_key=os.environ.get('openai_api_key'),
+    api_key=os.environ.get('api_key_3_1'),
 )
 
 #Se carga la lista de películas de movie_titles.json
@@ -72,6 +72,8 @@ for i in range(len(movies)):
     print(movies[i]['year'])
 
     print(f"pelicula {i} de {len(movies)}")
+    if i ==3:
+        break
 
 file_path = "movie_descriptions.json"
 

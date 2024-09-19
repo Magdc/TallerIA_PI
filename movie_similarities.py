@@ -8,7 +8,7 @@ import numpy as np
 _ = load_dotenv('api_keys.env')
 client = OpenAI(
     # This is the default and can be omitted
-    api_key=os.environ.get('openai_api_key'),
+    api_key=os.environ.get('api_key_3_1'),
 )
 
 with open('movie_descriptions.json', 'r') as file:
