@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -7,8 +8,19 @@ import matplotlib.pyplot as plt
 import matplotlib
 import io
 import urllib, base64
-
-
+from dotenv import load_dotenv, find_dotenv
+import json
+import os
+from openai import OpenAI
+#from openai.embeddings_utils import get_embedding, cosine_similarity
+import numpy as np
+from dotenv import load_dotenv, find_dotenv
+import json
+import os
+from openai import OpenAI
+#from openai.embeddings_utils import get_embedding, cosine_similarity
+import numpy as np
+from dotenv import load_dotenv
 
 def home(request):
     #return HttpResponse('<h1>Welcome to Home Page</h1>')
@@ -108,20 +120,3 @@ def statistics_view(request):
 
     return render(request, 'statistics.html', {'year_graphic': year_graphic, 'genre_graphic': genre_graphic})
 
-
-def generate_bar_chart(data, xlabel, ylabel):
-    keys = [str(key) for key in data.keys()]
-    plt.bar(keys, data.values())
-    plt.title('Movies Distribution')
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.xticks(rotation=90)
-    plt.tight_layout()
-    buffer = io.BytesIO()
-    plt.savefig(buffer, format='png')
-    buffer.seek(0)
-    plt.close()
-    image_png = buffer.getvalue()
-    buffer.close()
-    graphic = base64.b64encode(image_png).decode('utf-8')
-    return graphic
