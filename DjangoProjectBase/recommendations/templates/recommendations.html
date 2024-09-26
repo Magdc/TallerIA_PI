@@ -12,22 +12,22 @@
         <button type="submit" class="btn btn-primary">Buscar</button>
     </form>   
     
-    {% if searchTerm %}
-        <p>Buscando: {{ searchTerm }}</p> 
+    {% if search_term %}
+        <p>Buscando: {{ search_term }}</p> 
     {% endif %}
     
     {% if movie %}
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
                 <div class="card">
-                    <img src="{{ recommended_movie.image.url }}" class="card-img-top" alt="{{ recommended_movie.title }}">   
+                    <img src="{{ movie.image.url }}" class="card-img-top" alt="{{ movie.title }}">   
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ recommended_movie.title }}</h5>
-                        <p class="card-text">{{ recommended_movie.description }}</p>
-                        <p class="card-text">{{ recommended_movie.genre }}</p>
-                        <p class="card-text">{{ recommended_movie.year }}</p>
-                        {% if recommended_movie.url %}
-                            <a href="{{ recommended_movie.url }}" class="btn btn-primary">Ver película</a>
+                        <h5 class="card-title fw-bold">{{ movie.title }}</h5>
+                        <p class="card-text">{{ movie.description }}</p>
+                        <p class="card-text">{{ movie.genre }}</p>
+                        <p class="card-text">{{ movie.year }}</p>
+                        {% if movie.url %}
+                            <a href="{{ movie.url }}" class="btn btn-primary">Ver película</a>
                         {% endif %}
                     </div>
                 </div>

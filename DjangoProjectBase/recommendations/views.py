@@ -4,6 +4,10 @@ import os
 import numpy as np
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
+from openai import OpenAI
+import json
+from dotenv import load_dotenv, find_dotenv
+
 
 
 def get_embedding(text, client, model="text-embedding-3-small"):
@@ -17,12 +21,9 @@ def recommendation(request):
     req = request.GET.get('searchMovie')
 
     if req:
-        _ = load_dotenv('api_keys.env') # Asegúrate de que el archivo .env esté siendo encontrado
-        client = OpenAI(
-        # This is the default and can be omitted
-            api_key=os.environ.get('api_key_3_1'),
-        )
-
+#Se lee del archivo .env la api key de openai
+        _ = load_dotenv('../api_keys.env')
+        client = OpenAI( api_key=os.environ.get('opeanai_api_key'),)
         items = Movie.objects.all()
         # Obtener el embedding de la consulta
         emb_req = get_embedding(req, client)
